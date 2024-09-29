@@ -1,8 +1,8 @@
-# Hinode Module - Template
+# Hinode Module - Countup
 
 <!-- Tagline -->
 <p align="center">
-    <b>A template to define a Hugo module compatible with Hinode</b>
+    <b>A Hugo module for [Hinode](https://github.com/gethinode/hinode) providing a shortcode for an upwards counting timer</b>
     <br />
 </p>
 
@@ -33,6 +33,19 @@
 ![Logo](https://raw.githubusercontent.com/gethinode/hinode/main/static/img/logo.png)
 
 Hinode is a clean blog theme for [Hugo][hugo], an open-source static site generator. Hinode is available as a [template][repository_template], and a [main theme][repository]. <!-- This repository maintains a Hugo module to add [module][module] to a Hinode site. --> Visit the Hinode documentation site for [installation instructions][hinode_docs].
+
+## What is a count up timer?
+
+Normally when we refer to a timer, we are referring to a countdown timer, that is a timer that counts downwards the amount of time left before an event is to occur. A countup timer does the exact opposite of that, it counts upwards the amount of time that has passed since an event has occurred. Countup timers are used to recognize the passage of time from a significant event.
+
+## Usage
+
+Since it is a shortcode, all that needs to be done is add the shortcode to the desired page and provide the arguement `date`.
+The time/date formatting needs to be one that can be formatted by Hugo's `time.astime` method, basically `YYY-MM-DDTHH:MM:SS-offset` where offset is the offset hours of the local timezone. An example of how to use the shortcode is provided below.
+
+```html
+{{< countup date="2023-01-01T08:00:00-0600" >}}
+```
 
 ## Contributing
 
