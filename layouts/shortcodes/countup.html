@@ -1,46 +1,42 @@
-{{/*  CDN resources  */}}
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.3/jquery.easing.min.js"></script>
-
+<script src="countup.js" type="text/javascript" charset="utf-8"></script>
+<link rel="stylesheet" type="text/css" href="countup.css">
 {{/*  Define target date  */}}
 <script>
 {{- if .IsNamedParams -}}
     {{- with .Get "date" -}}
-        var targetDate = new Date({{- time.AsTime . | safeJSStr -}}).valueOf();
+        const targetDate = new Date({{- time.AsTime . | safeJSStr -}}).valueOf();
     {{- end -}}
 {{- else -}}
     {{- with .Get 0 -}}
-        var targetDate = new Date({{- time.AsTime . | safeJSStr -}}).valueOf();
+        const targetDate = new Date({{- time.AsTime . | safeJSStr -}}).valueOf();
     {{- end -}}
 {{- end -}}
 </script>
 
-{{/*  Load countup.js  */}}
-<script src="js/countup.js"></script>
-
 {{/*  Display countdown  */}}
-<span style="height: 300px">&nbsp;</span>
-<div class="container">
-  <ul id="countdown">
-     <li id="months">
+<div class="clearfix">
+  <ul id="cntlst">
+    <li id="months">
       <div class="number">00</div>
-      <div class="label">Months</div>
+      <div class="label text-uppercase">Months</div>
     </li>
     <li id="days">
       <div class="number">00</div>
-      <div class="label">Days</div>
+      <div class="label text-uppercase">Days</div>
     </li>
     <li id="hours">
       <div class="number">00</div>
-      <div class="label">Hours</div>
+      <div class="label text-uppercase">Hours</div>
     </li>
     <li id="minutes">
       <div class="number">00</div>
-      <div class="label">Minutes</div>
+      <div class="label text-uppercase">Minutes</div>
     </li>
     <li id="seconds">
       <div class="number">00</div>
-      <div class="label">Seconds</div>
+      <div class="label text-uppercase">Seconds</div>
     </li>
   </ul>
 </div>
