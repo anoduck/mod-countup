@@ -1,15 +1,19 @@
 baseURL = 'http://example.org/'
 languageCode = 'en-us'
-title = 'Test site for mod-template'
+title = 'Test site for mod-countup'
 
 [module]
   # Build and serve using local mod-template clone declared in the named Hugo workspace:
   workspace = "mod-template.work"
+  replacements = 'github.com/anoduck/mod-countup -> ../..'
   [[module.imports]]
-    path = "github.com/gethinode/mod-template"
+    path = "github.com/anoduck/mod-countup"
   [[module.imports.mounts]]
-    source = "dist"
-    target = "static"
+    source = "dist/js/countup.js"
+    target = "static/countup.js"
   [[module.imports.mounts]]
-    source = "layouts"
-    target = "layouts"
+    source = "dist/scss/countup.scss"
+    target = "static/countup.css"
+  [[module.imports.mounts]]
+    source = "layouts/shortcodes/countup.html"
+    target = "layouts/shortcodes/countup.html"

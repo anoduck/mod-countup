@@ -16,8 +16,8 @@ $(function () {
 });
 
 function timeFromEvent() {
-  var currentDate = new Date().valueOf();
-  var diff = (currentDate - targetDate) / 1000;
+  let currentDate = new Date().valueOf();
+  let diff = (currentDate - targetDate) / 1000;
   diff = Math.max(0, diff); //ensure not negative
   months = Math.floor(diff / (30.44 * 24 * 60 * 60));
   diff = diff - months * 30.44 * 24 * 60 * 60;
