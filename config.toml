@@ -4,6 +4,16 @@
     min = "0.110.0"
     max = ""
   [[module.mounts]]
+    source = 'dist/js/countup.js'
+    target = 'assets/js/countup.js'
+  [[module.mounts]]
+    source = 'dist/scss'
+    target = 'assets/scss'
+    includeFiles = ['countup.scss']
+  [[module.mounts]]
+    source = 'layouts/shortcode/countup.html'
+    target = 'layouts/shortcode/countup.html'
+  [[module.mounts]]
     source = 'layouts'
     target = 'layouts'
   [[module.mounts]]

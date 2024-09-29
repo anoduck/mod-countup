@@ -1,10 +1,14 @@
 {
-  "name": "@gethinode/mod-template",
+  "name": "@anoduck/mod-countup",
   "version": "0.0.1",
-  "description": "A template to define a Hugo module compatible with Hinode",
+  "description": "A Hugo module for Hinode to add a countup timer shortcode",
   "keywords": [
     "hugo",
-    "module"
+    "module",
+    "hinode",
+    "timer",
+    "countup",
+    "shortcode"
   ],
   "main": "index.js",
   "publishConfig": {
@@ -21,14 +25,16 @@
     "mod:update": "rimraf _vendor && hugo mod get -u ./... && hugo mod get -u && npm run -s mod:vendor && npm run -s mod:tidy",
     "mod:tidy": "hugo mod tidy",
     "mod:vendor": "rimraf _vendor && hugo mod vendor",
-    "postinstall": "echo TODO: add postinstall instructions",
+    "postinstall": "npm run -s copy:css && npm run -s copy:js",
+    "copy:css": "cpy assets/scss/countup.css dist/scss --rename=countup.scss --flat",
+    "copy:js": "cpy assets/js/countup.js dist/js --flat",
     "test": "npm run -s build",
     "upgrade": "npx npm-check-updates -u && npm run -s mod:update",
     "prepare": "node .husky/install.mjs"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/gethinode/mod-template.git"
+    "url": "git+https://github.com/anoduck/mod-countup.git"
   },
   "author": "Mark Dumay",
   "license": "MIT",
