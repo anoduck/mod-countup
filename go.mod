@@ -1,3 +1,3 @@
-module github.com/anoduck/mod-countup v0.1.1
+module github.com/anoduck/mod-countup
 
 go 1.19
