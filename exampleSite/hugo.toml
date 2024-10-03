@@ -9,11 +9,5 @@ title = 'Test site for mod-countup'
   [[module.imports]]
     path = "github.com/anoduck/mod-countup"
   [[module.imports.mounts]]
-    source = "dist/js/countup.js"
-    target = "static/countup.js"
-  [[module.imports.mounts]]
-    source = "dist/scss/countup.scss"
-    target = "static/countup.css"
-  [[module.imports.mounts]]
     source = "layouts/shortcodes/countup.html"
     target = "layouts/shortcodes/countup.html"
