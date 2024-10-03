@@ -25,9 +25,6 @@
     "mod:update": "rimraf _vendor && hugo mod get -u ./... && hugo mod get -u && npm run -s mod:vendor && npm run -s mod:tidy",
     "mod:tidy": "hugo mod tidy",
     "mod:vendor": "rimraf _vendor && hugo mod vendor",
-    "postinstall": "npm run -s copy:css && npm run -s copy:js",
-    "copy:css": "cpy assets/scss/countup.css dist/scss --rename=countup.scss --flat",
-    "copy:js": "cpy assets/js/countup.js dist/js --flat",
     "test": "npm run -s build",
     "upgrade": "npx npm-check-updates -u && npm run -s mod:update",
     "prepare": "node .husky/install.mjs"
