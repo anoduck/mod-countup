@@ -4,9 +4,7 @@ title = 'Test site for mod-countup'
 
 [module]
   # Build and serve using local mod-template clone declared in the named Hugo workspace:
-  workspace = "mod-template.work"
-  # replacements = "github.com/anoduck/mod-countup -> ../.."
-
+  workspace = "mod-countup.work"
   [[module.mounts]]
     source = "static"
     target = "static"
@@ -23,7 +21,7 @@ title = 'Test site for mod-countup'
     target = "static/js/countup.js"
   [[module.imports.mounts]]
     source = "dist/css/countup.scss"
-    target = "dist/countup.css"
+    target = "static/countup.css"
   [[module.imports.mounts]]
     source = 'layouts'
     target = 'layouts'
