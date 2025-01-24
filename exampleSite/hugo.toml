@@ -5,9 +5,25 @@ title = 'Test site for mod-countup'
 [module]
   # Build and serve using local mod-template clone declared in the named Hugo workspace:
   workspace = "mod-template.work"
-  replacements = 'github.com/anoduck/mod-countup -> ../..'
+  # replacements = "github.com/anoduck/mod-countup -> ../.."
+
+  [[module.mounts]]
+    source = "static"
+    target = "static"
   [[module.imports]]
     path = "github.com/anoduck/mod-countup"
   [[module.imports.mounts]]
-    source = "layouts/shortcodes/countup.html"
-    target = "layouts/shortcodes/countup.html"
+    source = "dist/js/jquery.js"
+    target = "static/js/jquery.js"
+  [[module.imports.mounts]]
+    source = "dist/js/jquery.easing.js"
+    target = "static/js/jquery.easing.js"
+  [[module.imports.mounts]]
+    source = "dist/js/countup.js"
+    target = "static/js/countup.js"
+  [[module.imports.mounts]]
+    source = "dist/css/countup.scss"
+    target = "dist/countup.css"
+  [[module.imports.mounts]]
+    source = 'layouts'
+    target = 'layouts'
