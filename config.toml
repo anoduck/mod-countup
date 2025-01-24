@@ -1,3 +1,6 @@
+[markup.goldmark.renderer]
+  unsafe = true
+
 [module]
   [module.hugoVersion]
     extended = true
@@ -19,3 +22,7 @@
   [[module.mounts]]
     source = 'dist/css/countup.scss'
     target = 'assets/scss/countup.scss'
+
+[params.modules.countup]
+  integration = "optional"
+  state = "async"
