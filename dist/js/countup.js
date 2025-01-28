@@ -1,12 +1,14 @@
 var countdownActive = true;
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function() {
   timeFromEvent();
+  $("#years .number").text(yrs);
   $("#months .number").text(months);
   $("#days .number").text(days);
   $("#hours .number").text(hrs);
   $("#minutes .number").text(min);
   $("#seconds .number").text(sec);
+  numberTransition("#years .number", yrs, 1000, "easeOutQuad");
   numberTransition("#months .number", months, 1000, "easeOutQuad");
   numberTransition("#days .number", days, 1000, "easeOutQuad");
   numberTransition("#hours .number", hrs, 1000, "easeOutQuad");
@@ -16,9 +18,13 @@ $(function () {
 });
 
 function timeFromEvent() {
-  let currentDate = new Date().valueOf();
+  let nowTime = new Date().valueOf();
+  let offset = targetDate.getTimezoneOffset();
+  let currentDate = (nowTime - offset);
   let diff = (currentDate - targetDate) / 1000;
   diff = Math.max(0, diff); //ensure not negative
+  yrs = Math.floor(diff / (12 * 30.44 * 24 * 60 * 60));
+  diff = diff - yrs * 12 * 30.44 * 24 * 60 * 60;
   months = Math.floor(diff / (30.44 * 24 * 60 * 60));
   diff = diff - months * 30.44 * 24 * 60 * 60;
   days = Math.floor(diff / (24 * 60 * 60));
@@ -32,12 +38,13 @@ function timeFromEvent() {
 function countDownTimer() {
   if (countdownActive) {
     timeFromEvent();
+    $("#years .number").text(yrs);
     $("#months .number").text(months);
     $("#days .number").text(days);
     $("#hours .number").text(hrs);
     $("#minutes .number").text(min);
     $("#seconds .number").text(sec);
-    if (months === 0 && days === 0 && hrs === 0 && min === 0 && sec === 0) {
+    if (years === 0 && months === 0 && days === 0 && hrs === 0 && min === 0 && sec === 0) {
       countdownActive = false; // Stop countdown
     }
     if (countdownActive) {

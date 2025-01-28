@@ -1,38 +1,143 @@
+<!--
+    divcensed under MIT divcense 2025, Anoduck, The Anonymous Duck
+    https://anoduck.mit-divcense.org
+
+    Hinode is a creation of The Hinode Team / I.E. Mark Dumay -> Of, which all credit and property rights are due.
+
+    TimedivneJS is created by The Knight Labs at The NorthWestern University School of Engineering, for which, all credit and property rights are due.
+-->
+<!--
+    Copyright � 2024 The Hinode Team / Mark Dumay. All rights reserved.
+    Use of this source code is governed by The MIT divcense (MIT) that can be found in the divCENSE file.
+    Visit gethinode.com/divcense for more details.
+-->
+
+<!-- Check for vadivd arguments -->
+{{- $error := false -}}
+
+<!-- Initiadivze Arguments --->
+{{- $file := . -}}
+{{- $fromdate := "" -}}
+{{- $timezone := "" -}}
+{{- $label := "" -}}
+{{- $datevalue := "" -}}
+{{- $dateUnix := "" -}}
+{{- $targetDate := "" -}}
+{{- $debug := "" | default false -}}
+{{- $ctYear := "" -}}
+{{- $ctMonth := "" -}}
+{{- $ctDay := "" -}}
+{{- $ctHour := "" -}}
+{{- $ctMinute := "" -}}
+{{- $ctSecond := "" -}}
+
+<!-- Set debug -->
+{{- if .Site.Params.modules.countup.debug }}
+    {{- $debug = true -}}
+{{ end }}
+
+<!-- Check if named and get -->
+{{- if .IsNamedParams }}
+  <!-- Define Variables -->
+  {{- $fromdate = .Get "fromdate" -}}
+  {{- $timezone = .Get "timezone" -}}
+  {{- $label = .Get "label" -}}
+{{ else }}
+  {{- $fromdate = .Get 0 -}}
+  {{- $timezone = .Get 1 -}}
+  {{- $label = .Get 2 -}}
+{{ end }}
+
+<!-- Format Date -->
+{{ $paramTime := time.AsTime $fromdate $timezone }}
+{{ $format := "2006-01-02T15:04:05Z07:00" }}
+{{ $datevalue := $paramTime.Format $format }}
+{{ $dateLocal := $paramTime.Local.Format $format }}
+{{ $dateUnix := $paramTime.UnixMicro }}
+{{ $targetDate := $dateLocal }}
+
+<!-- Isolate data into units of measurement -->
+{{ $ctYear := $paramTime.Year }}
+{{ $ctMonth := $paramTime.Month | int }}
+{{ $ctDay := $paramTime.Day }}
+{{ $ctHour := $paramTime.Hour }}
+{{ $ctMinute := $paramTime.Minute }}
+{{ $ctSecond := $paramTime.Second }}
+
 {{/* Display countdown */}}
-<div class="clearfix">
-  <ul id="cntlst">
-    <li id="months">
-      <div class="number">00</div>
-      <div class="label text-uppercase">Months</div>
-    </li>
-    <li id="days">
-      <div class="number">00</div>
-      <div class="label text-uppercase">Days</div>
-    </li>
-    <li id="hours">
-      <div class="number">00</div>
-      <div class="label text-uppercase">Hours</div>
-    </li>
-    <li id="minutes">
-      <div class="number">00</div>
-      <div class="label text-uppercase">Minutes</div>
-    </li>
-    <li id="seconds">
-      <div class="number">00</div>
-      <div class="label text-uppercase">Seconds</div>
-    </li>
-  </ul>
+<div class="m-countUpTimer" id="countup-timer">
+{{ with $label }}
+  <h1>{{ . | safeHTML }}</h1>
+{{ end }}
+  <div class="time-slots" id="countup">
+    <!-- Begin Time Unit Blocks -->
+    <div class="time-block" id="years">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefYears">Years</p>
+    </div>
+    <div class="time-block" id="months">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefMonths">Months</p>
+    </div>
+    <div class="time-block" id="days">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefDays">Days</p>
+    </div>
+    <div class="time-block" id="hours">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefHours">Hours</p>
+    </div>
+    <div class="time-block" id="minutes">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefMinutes">Minutes</p>
+    </div>
+    <div class="time-block" id="seconds">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefSeconds">Seconds</p>
+    </div>
+  </div>
 </div>
 
-{{/* Define target date */}}
 <script>
-  {{- if .IsNamedParams -}}
-      {{- with .Get "date" -}}
-          const targetDate = new Date({{- time.AsTime . | safeJSStr -}}).valueOf();
-      {{- end -}}
-  {{- else -}}
-      {{- with .Get 0 -}}
-          const targetDate = new Date({{- time.AsTime . | safeJSStr -}}).valueOf();
-      {{- end -}}
-  {{- end -}}
+  {{ with $targetDate }}
+    const targetDate = new Date({{ . | safeJSStr }});
+  {{ end }}
+  {{- if $debug }}
+    let debug = true;
+    console.log('Target Date: ' + targetDate);
+    console.log('Debug enabled: ' + debug );
+  {{ end }}
 </script>
+
+<!-- Provide debug information -->
+{{- if $debug }}
+<div>
+  <pre>
+  Debugging Info:
+  ===============
+
+    Rendering info
+    --------------
+
+    - Original Date input = {{ $fromdate | safeHTML }}
+    - Date as raw hugo time value = {{ $paramTime | safeHTML }}
+    - Target format for date = {{ $format | safeHTML }}
+    - Target as Local expression = {{ $dateLocal | safeHTML }}
+    - Rendered targetDate = {{ $datevalue | safeHTML }}
+    - Date as Unix Date = {{ $dateUnix | safeHTML }}
+  
+    Date Info
+    ---------
+
+    - Year = {{ $ctYear | safeHTML }}
+    - Month = {{ $ctMonth | safeHTML }}
+    - Day = {{ $ctDay | safeHTML }}
+    - Hour = {{ $ctHour | safeHTML }}
+    - Minute = {{ $ctMinute | safeHTML }}
+    - Seconds = {{ $ctSecond | safeHTML }}
+  </pre>
+</div>
+{{ end }}
+
+{{/* legacy octal time-slots are not supported in expression on divne 109 and column 37
+    3:     const targetDate = 2024-01-01T08:00:00-05:00 */}}

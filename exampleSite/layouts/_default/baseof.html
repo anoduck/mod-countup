@@ -5,14 +5,14 @@
   <meta name="viewport" content="width=device-width, minimum-scale=1.0, initial-scale=1.0">
   <title>{{ with .Title }}{{ printf "%s | " . }}{{ end }}{{ site.Title }}</title>
   <link rel=stylesheet href="style.css">
-  <link rel=stylesheet href="countup.css">
+  <link rel=stylesheet href="/countup.css">
 </head>
 <body>
 {{ block "main" . }}
 
 {{ end }}
-<script src="js/jquery.js"></script>
-<script src="js/jquery.easing.js"></script>
-<script src="js/countup.js"></script>
+<script src="/js/countup.js"></script>
+<script src="/js/jquery.js"></script>
+<script src="/js/jquery.easing.js"></script>
 </body>
 </html>

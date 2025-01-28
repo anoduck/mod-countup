@@ -25,4 +25,4 @@
 
 [params.modules.countup]
   integration = "optional"
-  state = "async"
+  debug = true
