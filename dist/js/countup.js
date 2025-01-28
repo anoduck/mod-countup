@@ -1,24 +1,30 @@
 var countdownActive = true;
 
-$(function () {
+document.addEventListener('DOMContentLoaded', function() {
   timeFromEvent();
-  $("#months .number").text(months);
-  $("#days .number").text(days);
-  $("#hours .number").text(hrs);
-  $("#minutes .number").text(min);
-  $("#seconds .number").text(sec);
-  numberTransition("#months .number", months, 1000, "easeOutQuad");
-  numberTransition("#days .number", days, 1000, "easeOutQuad");
-  numberTransition("#hours .number", hrs, 1000, "easeOutQuad");
-  numberTransition("#minutes .number", min, 1000, "easeOutQuad");
-  numberTransition("#seconds .number", sec, 1000, "easeOutQuad");
+  $("#years .time-slot").text(yrs);
+  $("#months .time-slot").text(months);
+  $("#days .time-slot").text(days);
+  $("#hours .time-slot").text(hrs);
+  $("#minutes .time-slot").text(min);
+  $("#seconds .time-slot").text(sec);
+  numberTransition("#years .time-slot", yrs, 1000, "easeOutQuad");
+  numberTransition("#months .time-slot", months, 1000, "easeOutQuad");
+  numberTransition("#days .time-slot", days, 1000, "easeOutQuad");
+  numberTransition("#hours .time-slot", hrs, 1000, "easeOutQuad");
+  numberTransition("#minutes .time-slot", min, 1000, "easeOutQuad");
+  numberTransition("#seconds .time-slot", sec, 1000, "easeOutQuad");
   setTimeout(countDownTimer, 1001);
 });
 
 function timeFromEvent() {
-  let currentDate = new Date().valueOf();
+  let nowTime = new Date().valueOf();
+  let offset = targetDate.getTimezoneOffset();
+  let currentDate = (nowTime - offset);
   let diff = (currentDate - targetDate) / 1000;
   diff = Math.max(0, diff); //ensure not negative
+  yrs = Math.floor(diff / (12 * 30.44 * 24 * 60 * 60));
+  diff = diff - yrs * 12 * 30.44 * 24 * 60 * 60;
   months = Math.floor(diff / (30.44 * 24 * 60 * 60));
   diff = diff - months * 30.44 * 24 * 60 * 60;
   days = Math.floor(diff / (24 * 60 * 60));
@@ -32,12 +38,13 @@ function timeFromEvent() {
 function countDownTimer() {
   if (countdownActive) {
     timeFromEvent();
-    $("#months .number").text(months);
-    $("#days .number").text(days);
-    $("#hours .number").text(hrs);
-    $("#minutes .number").text(min);
-    $("#seconds .number").text(sec);
-    if (months === 0 && days === 0 && hrs === 0 && min === 0 && sec === 0) {
+    $("#years .time-slot").text(yrs);
+    $("#months .time-slot").text(months);
+    $("#days .time-slot").text(days);
+    $("#hours .time-slot").text(hrs);
+    $("#minutes .time-slot").text(min);
+    $("#seconds .time-slot").text(sec);
+    if (years === 0 && months === 0 && days === 0 && hrs === 0 && min === 0 && sec === 0) {
       countdownActive = false; // Stop countdown
     }
     if (countdownActive) {
@@ -53,10 +60,10 @@ function numberTransition(id, endPoint, transitionDuration, transitionEase) {
       duration: transitionDuration,
       easing: transitionEase,
       step: function () {
-        $(id).text(Math.floor(this.numberCount));
+        $(id).text(Math.floor(this.time-slotCount));
       },
       complete: function () {
-        $(id).text(this.numberCount);
+        $(id).text(this.time-slotCount);
       },
     },
   );
