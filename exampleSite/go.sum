@@ -2,6 +2,8 @@ github.com/anoduck/mod-countup v0.0.1 h1:cR82trWRlgQDILewCfLCIx12m4W+KaJ2dFqFBiH
 github.com/anoduck/mod-countup v0.0.1/go.mod h1:j4DhQAAE6qmED5KD3o43cCHYD0Q7AVMMUUZDSkS2a8Y=
 github.com/anoduck/mod-countup v0.0.2 h1:8nAT3QxNVcexz4Rd7gwCuSETlc2ytFT3au4e4y/w4K0=
 github.com/anoduck/mod-countup v0.0.2/go.mod h1:j4DhQAAE6qmED5KD3o43cCHYD0Q7AVMMUUZDSkS2a8Y=
+github.com/anoduck/mod-countup v0.0.5 h1:63ATHVBTHTPfB9mHOzN0ZiMWheC0tkshrQ0+BTnvV9E=
+github.com/anoduck/mod-countup v0.0.5/go.mod h1:j4DhQAAE6qmED5KD3o43cCHYD0Q7AVMMUUZDSkS2a8Y=
 github.com/gethinode/mod-template v0.0.0-20240304031439-297f26e96855 h1:79n9BJStYGBmvg2wXq0CdpDH1+jYlvLa68iaiAsHw0M=
 github.com/gethinode/mod-template v0.0.0-20240304031439-297f26e96855/go.mod h1:6ofWqxiQMhTnI8U6mT3FrEUN1UZ0vcUcZyXVIny2CZs=
 github.com/gethinode/mod-template v0.0.0-20240304050912-e05887822540 h1:wdzsVwBiQyKkUNxDE06cn66CMzL04I86XP0cMNKM4+4=
