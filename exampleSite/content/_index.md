@@ -6,4 +6,4 @@ date: 2023-07-10
 
 A countup timer should be displayed in the box below.
 
-{{< countup fromdate="2024-01-01 08:00:00" timezone="EST" >}}
+{{< countup fromdate="2023-10-18 13:21:17" timezone="EST" label="Time from notification event:" >}}

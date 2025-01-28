@@ -2,18 +2,18 @@ var countdownActive = true;
 
 document.addEventListener('DOMContentLoaded', function() {
   timeFromEvent();
-  $("#years .time-slot").text(yrs);
-  $("#months .time-slot").text(months);
-  $("#days .time-slot").text(days);
-  $("#hours .time-slot").text(hrs);
-  $("#minutes .time-slot").text(min);
-  $("#seconds .time-slot").text(sec);
-  numberTransition("#years .time-slot", yrs, 1000, "easeOutQuad");
-  numberTransition("#months .time-slot", months, 1000, "easeOutQuad");
-  numberTransition("#days .time-slot", days, 1000, "easeOutQuad");
-  numberTransition("#hours .time-slot", hrs, 1000, "easeOutQuad");
-  numberTransition("#minutes .time-slot", min, 1000, "easeOutQuad");
-  numberTransition("#seconds .time-slot", sec, 1000, "easeOutQuad");
+  $("#years .number").text(yrs);
+  $("#months .number").text(months);
+  $("#days .number").text(days);
+  $("#hours .number").text(hrs);
+  $("#minutes .number").text(min);
+  $("#seconds .number").text(sec);
+  numberTransition("#years .number", yrs, 1000, "easeOutQuad");
+  numberTransition("#months .number", months, 1000, "easeOutQuad");
+  numberTransition("#days .number", days, 1000, "easeOutQuad");
+  numberTransition("#hours .number", hrs, 1000, "easeOutQuad");
+  numberTransition("#minutes .number", min, 1000, "easeOutQuad");
+  numberTransition("#seconds .number", sec, 1000, "easeOutQuad");
   setTimeout(countDownTimer, 1001);
 });
 
@@ -38,12 +38,12 @@ function timeFromEvent() {
 function countDownTimer() {
   if (countdownActive) {
     timeFromEvent();
-    $("#years .time-slot").text(yrs);
-    $("#months .time-slot").text(months);
-    $("#days .time-slot").text(days);
-    $("#hours .time-slot").text(hrs);
-    $("#minutes .time-slot").text(min);
-    $("#seconds .time-slot").text(sec);
+    $("#years .number").text(yrs);
+    $("#months .number").text(months);
+    $("#days .number").text(days);
+    $("#hours .number").text(hrs);
+    $("#minutes .number").text(min);
+    $("#seconds .number").text(sec);
     if (years === 0 && months === 0 && days === 0 && hrs === 0 && min === 0 && sec === 0) {
       countdownActive = false; // Stop countdown
     }
@@ -60,10 +60,10 @@ function numberTransition(id, endPoint, transitionDuration, transitionEase) {
       duration: transitionDuration,
       easing: transitionEase,
       step: function () {
-        $(id).text(Math.floor(this.time-slotCount));
+        $(id).text(Math.floor(this.numberCount));
       },
       complete: function () {
-        $(id).text(this.time-slotCount);
+        $(id).text(this.numberCount);
       },
     },
   );

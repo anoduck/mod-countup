@@ -19,6 +19,7 @@
 {{- $file := . -}}
 {{- $fromdate := "" -}}
 {{- $timezone := "" -}}
+{{- $label := "" -}}
 {{- $datevalue := "" -}}
 {{- $dateUnix := "" -}}
 {{- $targetDate := "" -}}
@@ -40,9 +41,11 @@
   <!-- Define Variables -->
   {{- $fromdate = .Get "fromdate" -}}
   {{- $timezone = .Get "timezone" -}}
+  {{- $label = .Get "label" -}}
 {{ else }}
   {{- $fromdate = .Get 0 -}}
   {{- $timezone = .Get 1 -}}
+  {{- $label = .Get 2 -}}
 {{ end }}
 
 <!-- Format Date -->
@@ -60,6 +63,51 @@
 {{ $ctHour := $paramTime.Hour }}
 {{ $ctMinute := $paramTime.Minute }}
 {{ $ctSecond := $paramTime.Second }}
+
+{{/* Display countdown */}}
+<div class="m-countUpTimer" id="countup-timer">
+{{ with $label }}
+  <h1>{{ . | safeHTML }}</h1>
+{{ end }}
+  <div class="time-slots" id="countup">
+    <!-- Begin Time Unit Blocks -->
+    <div class="time-block" id="years">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefYears">Years</p>
+    </div>
+    <div class="time-block" id="months">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefMonths">Months</p>
+    </div>
+    <div class="time-block" id="days">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefDays">Days</p>
+    </div>
+    <div class="time-block" id="hours">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefHours">Hours</p>
+    </div>
+    <div class="time-block" id="minutes">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefMinutes">Minutes</p>
+    </div>
+    <div class="time-block" id="seconds">
+      <p class="time-slot number">00</p>
+      <p class="time-slot time-slot-type timeRefSeconds">Seconds</p>
+    </div>
+  </div>
+</div>
+
+<script>
+  {{ with $targetDate }}
+    const targetDate = new Date({{ . | safeJSStr }});
+  {{ end }}
+  {{- if $debug }}
+    let debug = true;
+    console.log('Target Date: ' + targetDate);
+    console.log('Debug enabled: ' + debug );
+  {{ end }}
+</script>
 
 <!-- Provide debug information -->
 {{- if $debug }}
@@ -90,48 +138,6 @@
   </pre>
 </div>
 {{ end }}
-
-{{/* Display countdown */}}
-<div class="m-countUpTimer" id="countup-timer">
-  <h1>Time from notified:</h1>
-  <div class="time-slots" id="countup">
-    <div class="time-block">
-      <p class="time-slot" id="years">00</p>
-      <p class="time-slot time-slot-type timeRefYears">Years</p>
-    </div>
-    <div class="time-block">
-      <p class="time-slot" id="months">00</p>
-      <p class="time-slot time-slot-type timeRefMonths">Months</p>
-    </div>
-    <div class="time-block">
-      <p class="time-slot" id="days">00</p>
-      <p class="time-slot time-slot-type timeRefDays">Days</p>
-    </div>
-    <div class="time-block">
-      <p class="time-slot" id="hours">00</p>
-      <p class="time-slot time-slot-type timeRefHours">Hours</p>
-    </div>
-    <div class="time-block">
-      <p class="time-slot" id="minutes">00</p>
-      <p class="time-slot time-slot-type timeRefMinutes">Minutes</p>
-    </div>
-    <div class="time-block">
-      <p class="time-slot" id="seconds">00</p>
-      <p class="time-slot time-slot-type timeRefSeconds">Seconds</p>
-    </div>
-  </div>
-</div>
-
-<script>
-  {{ with $targetDate }}
-    const targetDate = new Date({{ . | safeJSStr }})
-  {{ end }}
-  {{ with $debug }}
-    let debug = {{ . | safeJS }}
-  {{ end }}
-  console.log('Target Date: ' + targetDate)
-  console.log('Debug enabled: ' + debug )
-</script>
 
 {{/* legacy octal time-slots are not supported in expression on divne 109 and column 37
     3:     const targetDate = 2024-01-01T08:00:00-05:00 */}}
