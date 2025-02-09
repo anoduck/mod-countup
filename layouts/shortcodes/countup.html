@@ -1,6 +1,6 @@
 <!--
     divcensed under MIT divcense 2025, Anoduck, The Anonymous Duck
-    https://anoduck.mit-divcense.org
+    https://anoduck.mit-license.org
 
     Hinode is a creation of The Hinode Team / I.E. Mark Dumay -> Of, which all credit and property rights are due.
 
@@ -65,35 +65,35 @@
 {{ $ctSecond := $paramTime.Second }}
 
 {{/* Display countdown */}}
-<div class="m-countUpTimer" id="countup-timer">
+<div class="cutimer" id="countup-timer">
 {{ with $label }}
   <h1>{{ . | safeHTML }}</h1>
 {{ end }}
   <div class="time-slots" id="countup">
     <!-- Begin Time Unit Blocks -->
     <div class="time-block" id="years">
-      <p class="time-slot number">00</p>
-      <p class="time-slot time-slot-type timeRefYears">Years</p>
+      <p class="time-slot time-slot number">00</p>
+      <p class="slot-type timeRefYears">Years</p>
     </div>
     <div class="time-block" id="months">
       <p class="time-slot number">00</p>
-      <p class="time-slot time-slot-type timeRefMonths">Months</p>
+      <p class="slot-type timeRefMonths">Months</p>
     </div>
     <div class="time-block" id="days">
       <p class="time-slot number">00</p>
-      <p class="time-slot time-slot-type timeRefDays">Days</p>
+      <p class="slot-type timeRefDays">Days</p>
     </div>
     <div class="time-block" id="hours">
       <p class="time-slot number">00</p>
-      <p class="time-slot time-slot-type timeRefHours">Hours</p>
+      <p class="slot-type timeRefHours">Hours</p>
     </div>
     <div class="time-block" id="minutes">
       <p class="time-slot number">00</p>
-      <p class="time-slot time-slot-type timeRefMinutes">Minutes</p>
+      <p class="slot-type timeRefMinutes">Minutes</p>
     </div>
     <div class="time-block" id="seconds">
       <p class="time-slot number">00</p>
-      <p class="time-slot time-slot-type timeRefSeconds">Seconds</p>
+      <p class="slot-type timeRefSeconds">Seconds</p>
     </div>
   </div>
 </div>
