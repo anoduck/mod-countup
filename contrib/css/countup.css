@@ -1,5 +1,5 @@
 :root {
-  --border: 0.125rem solid black;
+  --border: 0.2rem solid black;
   --shadow: 0.125rem 0.125rem 0.125rem black;
 }
 
@@ -17,7 +17,6 @@
   align-items: center;
   background-color: rgba(255,255,255,0.5);;
   box-sizing: border-box;
-  box-shadow: var(--shadow);
   font-family:
       system-ui,
       -apple-system,
@@ -33,11 +32,11 @@
   color: black;
   margin: 0;
   padding: 0;
-  border: 2px solid #444;
 }
 
 .cutimer h1 {
   text-align: center;
+  text-shadow: var(--shadow);
 }
 .time-block {
   border-right: var(--border);
