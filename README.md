@@ -54,7 +54,7 @@ Below are the required arguments for use of the shortcode in tabular form.
 
 | Argument | Format                                | description                                                                 |
 |----------|---------------------------------------|-----------------------------------------------------------------------------|
-| date     | any Hugo acceptable date format       | Sets the target date to count upwards from                                  |
+| fromdate | any Hugo acceptable date format       | Sets the target date to count upwards from                                  |
 | timezone | any valid timezone acceptable to Hugo | Combined along with target date to correctly calculate current display time |
 | label    | any                                   | used as label for the timer block                                           |
 
@@ -63,7 +63,7 @@ Below are the required arguments for use of the shortcode in tabular form.
 An example on how to use the shortcode is provided below.
 
 ```html
-{{< countup date="2023-01-01 08:00:00" timezone="PST" label="This is an example label" >}}
+{{< countup fromdate="2023-01-01 08:00:00" timezone="PST" label="This is an example label" >}}
 <!-- or -->
 {{< countup "2023-01-01 08:00:00" "PST" "Another example label for unnamed parameters." >}}
 ```
