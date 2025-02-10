@@ -4,19 +4,12 @@
 }
 
 .cutimer {
-  display: -webkit-box;
-  -webkit-box-orient: vertical;
-  -webkit-box-direction: normal;
-  -ms-flex-direction: column;
-  flex-direction: column;
-  -webkit-box-pack: center;
-  -ms-flex-pack: center;
-  justify-content: center;
-  -webkit-box-align: center;
-  -ms-flex-align: center;
+  display: flexbox;
   align-items: center;
   background-color: rgba(255,255,255,0.5);;
   box-sizing: border-box;
+  box-shadow: var(--shadow);
+  border-radius: 1rem;
   font-family:
       system-ui,
       -apple-system,
@@ -31,12 +24,12 @@
       sans-serif;
   color: black;
   margin: 0;
-  padding: 0;
+  padding: 1rem;
+  border: 2px solid #444;
 }
 
 .cutimer h1 {
   text-align: center;
-  text-shadow: var(--shadow);
 }
 .time-block {
   border-right: var(--border);

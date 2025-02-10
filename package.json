@@ -1,6 +1,6 @@
 {
   "name": "@anoduck/mod-countup",
-  "version": "0.1.4",
+  "version": "0.1.5",
   "description": "A Hugo module for Hinode to add a countup timer shortcode",
   "keywords": [
     "hugo",
