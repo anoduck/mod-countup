@@ -52,7 +52,7 @@
     "commitizen": "^4.3.1",
     "cpy-cli": "^5.0.0",
     "cz-conventional-changelog": "^3.3.0",
-    "hugo-bin": "^0.144.0",
+    "hugo-bin": "^0.144.1",
     "husky": "^9.1.7",
     "jquery": "^3.7.1",
     "jquery.easing": "^1.4.1",
